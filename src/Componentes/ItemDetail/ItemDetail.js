@@ -6,11 +6,14 @@ import { Container, Row, Col } from 'react-bootstrap'
 import "./ItemDetail.css"
 import { useParams } from 'react-router-dom'
 import ItemCount from '../ItemCount/ItemCount'
+import { useContext } from 'react'
+import { CartContext } from '../../Context/CartContext'
 
 function ItemDetail() {
     const{detalleJuegos}=useParams();
-    const [data,setData]= useState({})
+    const [data,setData]= useState({});
 
+    
     useEffect(()=>{
         getFetch.then(data=>{
             if(detalleJuegos===undefined){
@@ -22,9 +25,12 @@ function ItemDetail() {
             })
         },[detalleJuegos])
     
-        
+        const{addProduct} = useContext(CartContext);
+
         const onAdd=(count)=>{
-            alert(`Gracias por su compra ${count}`)
+            const nuevoProducto={...data,cantidad:count}
+            addProduct(nuevoProducto)
+
         }
 
   return (

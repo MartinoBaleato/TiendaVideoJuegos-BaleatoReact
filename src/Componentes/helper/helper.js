@@ -7,7 +7,7 @@ import GtaV from "../Imgs/gtav.jpg"
 import FarCry6 from "../Imgs/farcry.jpg"
 import ForzaHorizon from "../Imgs/forzahorizon.jpg"
 
-const juegos = [
+ export const juegos = [
     {id: 1, titulo:"Fifa 23",detalle:"Juego mas popular de futbol en el mundo" ,precio:"10000$",image: Fifa23, categoria:"Deporte"},
     {id: 2, titulo:"Call of Duty Vanguard" ,detalle:"Juego de accion ultra realista",precio:"8000$", image: CallOfDuty, categoria:"Accion"},
     {id: 3, titulo:"OutLast 2" ,detalle:"Juego de Terror primera persona",precio:"6000$", image: Outlast, categoria:"Terror"},
