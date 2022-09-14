@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext'
 import { Item } from '../Item/Item'
-import { CartItem } from "./CartItem/CartItem.js"
+
 
 
 export const CartContainer = () => {
-    const { productCartList, clearCart } = useContext(CartContext);
+    const { productCartList, clearCart,deleteProduct } = useContext(CartContext);
     debugger;
 
     return (
@@ -14,14 +14,15 @@ export const CartContainer = () => {
             {productCartList ?
                 productCartList.map((item) =>
                     <>
-                        <p>{item.id}</p>
                         <p>{item.titulo}</p>
                         <p>{item.precio}</p>
                         <p>{item.cantidad}</p>
+                        <button onClick={()=>deleteProduct(item.id)}>Elminar Producto</button>
                     </>
-
+                    
                 ) : null
             }
+     
         </>
     )
 }

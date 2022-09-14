@@ -35,7 +35,7 @@ export const CartProvider =({children})=>{
     }
 
     const clearCart =()=>{
-        setProductCartList([])
+        setProductCartList({})
     }
 
 
