@@ -15,16 +15,17 @@ export const CartProvider =({children})=>{
     }
 
     const addProduct = (product,cantidad )=>{
+        debugger;
         const nuevaLista=[...productCartList]
         if(isInCart(product.id)){
             const productIndex = productCartList.findIndex(element=>element.id===product.id);
             nuevaLista[productIndex].cantidad = nuevaLista[productIndex].cantidad + cantidad;
             setProductCartList(nuevaLista)
         }else{
-            const nuevoProducto=[...product,cantidad]
-            const nuevaLista = [...productCartList]
-            nuevaLista.push(nuevoProducto);
-            setProductCartList(nuevaLista)
+            const nuevoProducto=[...productCartList, product]
+            // const nuevaLista = [...productCartList]
+            // nuevaLista.push(nuevoProducto);
+            setProductCartList(nuevoProducto)
         }
     }
     const deleteProduct = (idProduct)=>{

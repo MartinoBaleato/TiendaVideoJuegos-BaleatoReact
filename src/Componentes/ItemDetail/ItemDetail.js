@@ -28,8 +28,9 @@ function ItemDetail() {
         const{addProduct} = useContext(CartContext);
 
         const onAdd=(count)=>{
+            debugger;
             const nuevoProducto={...data,cantidad:count}
-            addProduct(nuevoProducto)
+            addProduct(nuevoProducto, count)
 
         }
 
