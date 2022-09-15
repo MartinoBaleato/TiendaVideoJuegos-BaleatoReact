@@ -11,7 +11,7 @@ export const Item =({titulo,image,precio,id})=>{
             <img src={image} alt=""></img>
             <div className="card-body text-light ">
                 <h4 className="card-title">{titulo}</h4>
-                <p className="card-text">{precio}</p>
+                <p className="card-text">${precio}</p>
                 <button className="btn btn-outline-secondary">Comprar Ahora</button>
             </div>
         </div>

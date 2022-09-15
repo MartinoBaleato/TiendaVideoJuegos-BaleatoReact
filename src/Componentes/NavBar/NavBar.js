@@ -9,7 +9,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavBar() {
   return (
-        <Navbar bg="light">
+        <Navbar bg="info">
         <Container>
             <LinkBoostrap to="/" className='tamañoLetra'>JuegosMaxx</LinkBoostrap>
             <Stack className="justify-content-end p-3 tamañoLetra" direction="horizontal" gap={5}>
