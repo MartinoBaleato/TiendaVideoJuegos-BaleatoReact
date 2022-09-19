@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { getFetch } from '../helper/helper'
 import { Container, Row, Col } from 'react-bootstrap'
 import "./ItemDetail.css"
 import { useParams } from 'react-router-dom'
@@ -9,6 +8,8 @@ import ItemCount from '../ItemCount/ItemCount'
 import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext'
 import {Link as LinkBoostrap} from "react-router-dom"
+import {doc,getDoc} from "firebase/firestore"
+import { db } from '../../Utils/firebase'
 
 function ItemDetail() {
     const{detalleJuegos}=useParams();
@@ -16,14 +17,14 @@ function ItemDetail() {
 
     
     useEffect(()=>{
-        getFetch.then(data=>{
-            if(detalleJuegos===undefined){
-                setData(data)
-            }else{    
-                const nuevaLista = data.find(juegos=>juegos.id === parseInt((detalleJuegos)));
-                setData(nuevaLista)
+        const queryRef = doc(db,"items",detalleJuegos)
+        getDoc(queryRef).then(response=>{
+            const newDoc = {
+                ...response.data(),
+                id: response.id
             }
-            })
+            setData(newDoc)
+        }).catch(error=>console.log(error))
         },[detalleJuegos])
     
         const{addProduct} = useContext(CartContext);

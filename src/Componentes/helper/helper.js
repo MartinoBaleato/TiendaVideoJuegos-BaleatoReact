@@ -17,10 +17,10 @@ import ForzaHorizon from "../Imgs/forzahorizon.jpg"
 ];
 
 
-export const getFetch = new Promise((resolve, reject) => {
-    setTimeout(()=>{
-        resolve(juegos)
-        reject(err=>console.log(err))
-    },2000)
-})
+// export const getFetch = new Promise((resolve, reject) => {
+//     setTimeout(()=>{
+//         resolve(juegos)
+//         reject(err=>console.log(err))
+//     },2000)
+// })
 
