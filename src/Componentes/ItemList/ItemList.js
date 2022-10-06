@@ -10,7 +10,7 @@ import "./ItemList.css"
 function ItemList({data}) {
 
   return (
-    <Container>
+    <Container className='body'>
         <Row>
             {
                 data.map(data=>(

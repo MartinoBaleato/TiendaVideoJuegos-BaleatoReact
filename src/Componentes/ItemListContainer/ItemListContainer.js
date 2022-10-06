@@ -6,6 +6,8 @@ import { useState } from 'react'
 import {collection,getDoc,getDocs,query,where} from "firebase/firestore"
 import {db} from "../../Utils/firebase"
 import { getFetch } from '../helper/helper'
+import Footer from '../../Footer/Footer'
+import "./ItemListContainer.css"
 
 function ItemListContainer() {
 
@@ -35,7 +37,12 @@ useEffect(()=>{
 
 
   return (
+    <div className="body">
     <ItemList data={data}/>
+      <footer>
+        <Footer/>
+      </footer>
+    </div>
   )
 }
 

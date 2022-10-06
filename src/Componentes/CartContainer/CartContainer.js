@@ -3,12 +3,14 @@ import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext'
 import { Item } from '../Item/Item'
 import {Link as LinkBoostrap} from "react-router-dom"
-import { Formulario } from '../Formulario/Formulario'
+import Button from 'react-bootstrap/Button';
+import { Container } from 'react-bootstrap'
+import "./CartContainer.css"
 
 
 
 export const CartContainer = () => {
-    const { productCartList, clearCart,deleteProduct } = useContext(CartContext);
+    const { productCartList, clearCart,deleteProduct,getTotalPrice } = useContext(CartContext);
 
     
     if (productCartList.length === 0) {
@@ -16,8 +18,10 @@ export const CartContainer = () => {
         return (
             <div>
             <h5 className='text-center py-5 fw-bold'>No tienes productos en el carrito.</h5>
-            <LinkBoostrap to="/" className='text-center'>
-            <button>Volver a la pagina de inicio</button>
+            <LinkBoostrap to="/" className='letra'>
+            <Container className='d-flex justify-content-center aling-items-center'>
+            <Button variant="info" className='py-3 fw-bold'>Volver a la pagina de inicio</Button>
+            </Container>
             </LinkBoostrap>
             </div>
         )
@@ -36,7 +40,7 @@ export const CartContainer = () => {
                             <td>${item.precio}</td>
                             <td>Cantidad:{item.cantidad}</td>
                             <td>Total:{item.total}</td>
-                            <td><button onClick={() => deleteProduct(item.id)}>Elminar Producto</button></td>
+                            <td><Button  onClick={() => deleteProduct(item.id)} variant="outline-danger">Elminar Producto</Button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -45,10 +49,13 @@ export const CartContainer = () => {
                 ) : null
             }
             <hr/>
-
-      <button onClick={()=>clearCart()}>Vaciar Carrito</button> 
-      <p>Precio total ${getTotalPrice()}</p> 
-      <Formulario/>
+            <Container className='d-flex justify-content-center aling-items-center'>
+                <div className='d-flex justify-content-center aling-items-center'>
+                    <p>Precio total ${getTotalPrice()}</p> 
+                    <p><Button onClick={()=>clearCart()} variant="outline-danger">Vaciar Carrito</Button></p>
+                    <LinkBoostrap to="/order"><Button variant='Primary'>Terminar Compra</Button></LinkBoostrap>
+                </div>
+            </Container>
         </>
     )
 }
